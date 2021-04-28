@@ -22,7 +22,7 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 320px;
-    height: 80vh;
+    height: 75vh;
     background: url(./images/weather.png) no-repeat center;
     background-size: cover;
     border-radius: 10px;
@@ -157,3 +157,4 @@ body {
     padding-bottom: 10px;
 
 }
+
