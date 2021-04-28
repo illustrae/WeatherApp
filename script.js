@@ -26,15 +26,25 @@ function getData () {
 }
 
 function displayData (response) {
-  console.log(response)
+    console.log(response)
 
 }
 
 function displayData (response) {
-    //  console.log(response);
-    if (response.cod === "404") {
-        const error = document.querySelector(".error");
-        error.textContent = "Please enter a valid City";
-        search.value ="";
+        //  console.log(response);
+        if (response.cod === "404") {
+            const error = document.querySelector(".error");
+            error.textContent = "Please enter a valid City";
+            search.value ="";
+        } else {
+            const city = document.querySelector(".city");
+            city.innerText = `${response.name}, ${response.sys.country}`;
+        
+            const today = new Date();
+            const date = document.querySelector(".date");
+            date.innerText = dateFunction (today);
+    
+            const temp = document.querySelector(".temp");
+            temp.innerHTML = `Temp: ${Math.round(response.main, temp)}<span>°F</span>`;
+        }
     }
-  }
