@@ -26,5 +26,15 @@ function getData () {
 }
 
 function displayData (response) {
-    console.log(response);
+  console.log(response)
+
 }
+
+function displayData (response) {
+    //  console.log(response);
+    if (response.cod === "404") {
+        const error = document.querySelector(".error");
+        error.textContent = "Please enter a valid City";
+        search.value ="";
+    }
+  }
