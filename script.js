@@ -1,7 +1,6 @@
 const api = {
     key: "4167a064a57a9cc9286c6ca692d66971",
-    base: "https://api.openweathermap.org/data/2.5/"
-    
+    base: "https://api.openweathermap.org/data/2.5/"    
 }
 
 const search = document.querySelector(".search");
@@ -18,7 +17,7 @@ function getInput (event) {
 }
 
 function getData () {
-    fetch(`${api.base}weather?q=${search.value}&units=standard$appid=${api.key}`)
+    fetch(`${api.base}weather?q=${search.value}&units=metrics&APPID=${api.key}`)
         .then(response => {
             return response.json();
         }).then(displayData);
@@ -31,12 +30,12 @@ function displayData (response) {
 }
 
 function displayData (response) {
-        //  console.log(response);
+
         if (response.cod === "404") {
             const error = document.querySelector(".error");
             error.textContent = "Please enter a valid City";
             search.value ="";
-            
+
         } else {
             const city = document.querySelector(".city");
             city.innerText = `${response.name}, ${response.sys.country}`;
@@ -52,7 +51,7 @@ function displayData (response) {
             weather.innerText = `Weather: ${response.weather[0].main}`;
 
             const tempRange = document.querySelector(".temp-range");
-            tempRange.innerText = `Temp Range: ${Math.round(response.min.temp_min)} °F / ${Math.round(response.main.temp_max)}°F`;
+            tempRange.innerText = `Temp Range: ${Math.round(response.min.temp_min)} °C / ${Math.round(response.main.temp_max)}°C`;
 
         }
     }
