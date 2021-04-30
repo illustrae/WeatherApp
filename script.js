@@ -17,7 +17,7 @@ function getInput (event) {
 }
 
 function getData () {
-    fetch(`${api.base}weather?q=${search.value}&units=metrics&APPID=${api.key}`)
+    fetch(`${api.base}weather?q=${search.value}&units=imperial&APPID=${api.key}`)
         .then(response => {
             return response.json();
         }).then(displayData);
@@ -51,7 +51,12 @@ function displayData (response) {
             weather.innerText = `Weather: ${response.weather[0].main}`;
 
             const tempRange = document.querySelector(".temp-range");
-            tempRange.innerText = `Temp Range: ${Math.round(response.min.temp_min)} °C / ${Math.round(response.main.temp_max)}°C`;
+            tempRange.innerText = `Temp Range: ${Math.round(response.main.temp_min)} °F / ${Math.round(response.main.temp_max)}°F`;
+
+            const weatherIcon = document.querySelector(".weather-icon");
+            const iconURL = "http://openweathermap.org/img/w/";
+            weatherIcon.src = iconURL + response.weather[0].icon + ".png";
+
 
         }
     }
