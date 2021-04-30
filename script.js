@@ -57,7 +57,7 @@ function displayData (response) {
             const iconURL = "http://openweathermap.org/img/w/";
             weatherIcon.src = iconURL + response.weather[0].icon + ".png";
 
-
+            search.value = "";
         }
     }
 
